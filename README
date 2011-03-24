@@ -1,0 +1,6 @@
+First try to make one DataMapper adapter to access Dreamhost api, it's first version.
+
+There's some features to implement:
+
+* Model.save
+* etc
