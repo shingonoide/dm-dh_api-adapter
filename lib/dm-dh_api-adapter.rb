@@ -83,9 +83,9 @@ module DataMapper
       def records_for(model)
         storage_name = model.storage_name(name)
         case storage_name.to_sym
-          when :domains, :domain
+          when :domains, :domain, :data_mapper_dh_api_models_domains
             @records[storage_name] ||= DataMapper::DhApi::Adapter.domains
-          when :dnses, :dns
+          when :dnses, :dns, :data_mapper_dh_api_models_dns
             @records[storage_name] ||= DataMapper::DhApi::Adapter.dnses
           else
             raise NotImplementedError, "Storage (#{storage_name}) not implemented"
