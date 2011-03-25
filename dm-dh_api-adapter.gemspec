@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["shingonoide@gmail.com"]
   s.homepage    = "http://gihub.com/shingonoide/dm-dh_api-adapter"
   s.summary     = %q{DataMapper adapter for access Dreamhost's API}
-  s.description = %q{TODO: Write a gem description}
+  s.description = %q{Simple DataMapper adapter for access Dreamhost's API, just read for now.}
 
   s.rubyforge_project = "dm-dh_api-adapter"
 
