@@ -26,7 +26,7 @@ module DataMapper
           when 'success'
             response['data']
           when 'error'
-            raise APIRequestError, "Error: #{response['data']} - Reason: #{response['reason']}"
+            raise APIRequestError, "Error: #{response['data']}" + (response['reason'].blank? ? " " : " - Reason: #{response['reason']}")
           else
             raise APIRequestError, "Unknown exception"
         end
