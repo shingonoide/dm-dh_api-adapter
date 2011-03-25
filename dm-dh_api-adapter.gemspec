@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.add_runtime_dependency("dm-core", "~> 1.1.0")
   s.add_runtime_dependency("httparty", "~> 0.7.4")
+  s.add_development_dependency("rspec", "~> 1.3.1")
 end
