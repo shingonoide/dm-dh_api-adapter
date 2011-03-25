@@ -164,8 +164,24 @@ describe "Dh_Api adapter builtin " do
 
   end
 
+  describe "Model for User" do
+    it "should first record exists" do
+      DataMapper::DhApi::Models::User.first.should be
+    end
 
+    it "should first.username be apts718" do
+      DataMapper::DhApi::Models::User.first.username.should == 'apts718'
+    end
 
+    it "should last.username be apts718" do
+      DataMapper::DhApi::Models::User.last.username.should == 'apts718'
+    end
+
+    it "should get all and count 15 records" do
+      DataMapper::DhApi::Models::User.all.count.should be(15)
+    end
+
+  end
 end
 
 describe 'DataMapper::Adapters::DhApiAdapter' do

@@ -33,6 +33,16 @@ module DataMapper
 
       class User
         include DataMapper::Resource
+
+        property :disk_used_mb, Float
+        property :gecos, String
+        property :username, String
+        property :account, String
+        property :type, String
+        property :quota_mb, String
+        property :shell, String
+        property :home, String
+        property :password, String
       end
     end
   end

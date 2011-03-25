@@ -19,6 +19,14 @@ module DataMapper
         options = {:query => {:key => @@api_key, :format => 'json', :cmd => 'dns-list_records'}}
         request_api(options)
       end
+      def self.users
+        options = {:query => {:key => @@api_key, :format => 'json', :cmd => 'user-list_users_no_pw'}}
+        request_api(options)
+      end
+      def self.users_pw
+        options = {:query => {:key => @@api_key, :format => 'json', :cmd => 'user-list_users'}}
+        request_api(options)
+      end
 
       def self.request_api(options)
         response = get('/', options)
@@ -87,6 +95,10 @@ module DataMapper
             @records[storage_name] ||= DataMapper::DhApi::Adapter.domains
           when :dnses, :dns, :data_mapper_dh_api_models_dns
             @records[storage_name] ||= DataMapper::DhApi::Adapter.dnses
+          when :users, :user, :data_mapper_dh_api_models_users
+            @records[storage_name] ||= DataMapper::DhApi::Adapter.users
+          when :users_pw, :user_pw, :data_mapper_dh_api_models_users_pw
+            @records[storage_name] ||= DataMapper::DhApi::Adapter.users_pw
           else
             raise NotImplementedError, "Storage (#{storage_name}) not implemented"
         end
