@@ -111,7 +111,8 @@ describe DataMapper do
   end
 end
 
-describe "Model for Domain" do
+describe "Dh_Api adapter builtin " do
+
   before :all do
     @return = DataMapper.setup(:default, :adapter => :dh_api, :api_key => '6SHU5P2HLDAYECUM')
 
@@ -122,51 +123,48 @@ describe "Model for Domain" do
     DataMapper::Repository.adapters.delete(@return.name)
   end
 
-  it "first should be" do
-    DataMapper::DhApi::Models::Domain.first.should be
+  describe "Model for Domain" do
+
+    it "should first record exists" do
+      DataMapper::DhApi::Models::Domain.first.should be
+    end
+
+    it "should first.domain record be 718apts.com" do
+      DataMapper::DhApi::Models::Domain.first.domain.should == '718apts.com'
+    end
+
+    it "should last.domain record be 718apts.com" do
+      DataMapper::DhApi::Models::Domain.last.domain.should == '718apts.com'
+    end
+
+    it "should get Domain.all records and count 14 domains" do
+      domains = DataMapper::DhApi::Models::Domain.all
+      domains.count.should be(14)
+    end
+
   end
 
-  it "should first domain be 718apts.com" do
-    DataMapper::DhApi::Models::Domain.first.domain.should == '718apts.com'
+  describe "Model for DNS" do
+
+    it "should first record exists" do
+      DataMapper::DhApi::Models::DNS.first.should be
+    end
+
+    it "should first.record be 718apts.com" do
+      DataMapper::DhApi::Models::DNS.first.record.should == '718apts.com'
+    end
+
+    it "should last.record be 718apts.com" do
+      DataMapper::DhApi::Models::DNS.last.record.should == '718apts.com'
+    end
+
+    it "should get all and count 202 records" do
+      DataMapper::DhApi::Models::DNS.all.count.should be(202)
+    end
+
   end
 
-  it "should last domain be 718apts.com" do
-    DataMapper::DhApi::Models::Domain.last.domain.should == '718apts.com'
-  end
 
-  it "should get all and count 14 domains" do
-    domains = DataMapper::DhApi::Models::Domain.all
-    domains.count.should be(14)
-  end
-
-end
-
-describe "Model for DNS" do
-  before :all do
-    @return = DataMapper.setup(:default, :adapter => :dh_api, :api_key => '6SHU5P2HLDAYECUM')
-
-    @options = @return.options
-  end
-
-  after :all do
-    DataMapper::Repository.adapters.delete(@return.name)
-  end
-
-  it "first should be" do
-    DataMapper::DhApi::Models::DNS.first.should be
-  end
-
-  it "should first record be 718apts.com" do
-    DataMapper::DhApi::Models::DNS.first.record.should == '718apts.com'
-  end
-
-  it "should last record be 718apts.com" do
-    DataMapper::DhApi::Models::DNS.last.record.should == '718apts.com'
-  end
-
-  it "should get all and count 202 records" do
-    DataMapper::DhApi::Models::DNS.all.count.should be(202)
-  end
 
 end
 
